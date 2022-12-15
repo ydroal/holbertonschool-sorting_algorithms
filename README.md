@@ -1,12 +1,12 @@
 # C - Sorting algorithms & Big O
 
-A Sorting Algorithm is used to rearrange a given array or list  
+A Sorting Algorithm is used to rearrange a given array or listi.  
 We are learning at least four different sorting algorithms in C.  
 This is a group project.
 
 
 ## Requirements
-* All files were compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
+* All files were compiled on Ubuntu 20.04 LTS using gcc,  using the options -Wall -Werror -Wextra -pedantic -std=gnu89
 * This code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
 
 
@@ -80,7 +80,7 @@ typedef struct listint_s
 ```
 
 ## Tasks
---0. Bubble sort--
+__0. Bubble sort__  
 Write a function that sorts an array of integers in ascending order using the Bubble sort algorithm
 
 	* Prototype: void bubble_sort(int \*array, size_t size);
@@ -93,7 +93,7 @@ Write in the file 0-O, the big O notations of the time complexity of the Bubble 
 
 File: 0-bubble_sort.c, 0-O
 
---1. Insertion sort--
+__1. Insertion sort__  
 Write a function that sorts a doubly linked list of integers in ascending order using the Insertion sort algorithm
 
 	* Prototype: void insertion_sort_list(listint_t \*\*list);
@@ -107,7 +107,7 @@ Write in the file 1-O, the big O notations of the time complexity of the Inserti
 
 File: 1-insertion_sort_list.c, 1-O
 
---2. Selection sort--
+__2. Selection sort__  
 Write a function that sorts an array of integers in ascending order using the Selection sort algorithm
 
 	* Prototype: void selection_sort(int \*array, size_t size);
@@ -120,7 +120,7 @@ Write in the file 2-O, the big O notations of the time complexity of the Selecti
 
 File: 2-selection_sort.c, 2-O
 
---3. Quick sort--
+__3. Quick sort__  
 Write a function that sorts an array of integers in ascending order using the Quick sort algorithm
 
 	* Prototype: void quick_sort(int \*array, size_t size);
