@@ -13,6 +13,8 @@ void bubble_sort(int *array, size_t size)
 	int tmp;
 	int exchange = 1;
 
+	if (array == NULL || size < 2)
+		return;
 	while (exchange > 0)
 	{
 		exchange = 0;
@@ -28,5 +30,4 @@ void bubble_sort(int *array, size_t size)
 			}
 		}
 	}
-
 }
