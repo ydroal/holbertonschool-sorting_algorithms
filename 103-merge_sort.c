@@ -2,28 +2,24 @@
 #include <stdlib.h>
 
 /**
- * merge_sort_recursion - sorts an array of integers in ascending order
+ * duplicate_value - copy the value of array to merge
+ *                   from array into temporary array
  *
  * @array: the array to sort
  * @start: start index of array
+ * @mid: index of middle of array
  * @end: end index of array
  * @tmp: pointer to array using as working area
  * Return: Nothing
 */
 
-void merge_sort_recursion(int *array, size_t start, size_t end, int *tmp)
+void duplicate_value(int *array, size_t start,
+		size_t mid, size_t end, int *tmp)
 {
-	size_t mid, i, j, k, l, m;
-
-	if (start >= end)
-		return;
-
-	mid = (start + end) / 2;
-	merge_sort_recursion(array, start, mid, tmp);
-	merge_sort_recursion(array, mid + 1, end, tmp);
+	size_t i, j;
 
 	printf("Merging...\n");
-	for (i = start; i <= mid; i++)
+	for (i = start; i <= mid; ++i)
 	{
 		tmp[i] = array[i];
 		if (i == start)
@@ -40,6 +36,33 @@ void merge_sort_recursion(int *array, size_t start, size_t end, int *tmp)
 		else
 			printf(", %d", tmp[i]);
 	}
+}
+
+/**
+ * merge_sort_recursion - sorts an array of integers in ascending order
+ *
+ * @array: the array to sort
+ * @start: start index of array
+ * @end: end index of array
+ * @tmp: pointer to array using as working area
+ * Return: Nothing
+*/
+
+void merge_sort_recursion(int *array, size_t start, size_t end, int *tmp)
+{
+	size_t mid, k, l, m;
+
+	if (start >= end)
+		return;
+
+	mid = (start + end) / 2;
+	if ((start + end) % 2 == 0)
+		mid = mid - 1;
+
+	merge_sort_recursion(array, start, mid, tmp);
+	merge_sort_recursion(array, mid + 1, end, tmp);
+
+	duplicate_value(array, start, mid, end, tmp);
 
 	l = start;
 	m = end;
@@ -56,7 +79,10 @@ void merge_sort_recursion(int *array, size_t start, size_t end, int *tmp)
 			array[k] = tmp[m];
 			--m;
 		}
-		printf("%d, ", array[k]);
+		if (k == end)
+			printf("%d", array[k]);
+		else
+			printf("%d, ", array[k]);
 	}
 	printf("\n");
 }
