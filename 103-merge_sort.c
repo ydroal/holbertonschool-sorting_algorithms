@@ -18,25 +18,32 @@ void merge_sort_recursion(int *array, size_t start, size_t end, int *tmp)
 	if (start >= end)
 		return;
 
-	mid = start + (end - start) / 2;
+	mid = (start + end) / 2;
 	merge_sort_recursion(array, start, mid, tmp);
 	merge_sort_recursion(array, mid + 1, end, tmp);
 
 	printf("Merging...\n");
-	for (i = start; i <= mid; ++i)
+	for (i = start; i <= mid; i++)
+	{
 		tmp[i] = array[i];
-
-	printf("[left]: ");
-	print_array(tmp, i);
+		if (i == start)
+			printf("[left]: %d", tmp[i]);
+		else
+			printf(", %d", tmp[i]);
+	}
 
 	for (i = mid + 1, j = end; i <= end; ++i, --j)
+	{
 		tmp[i] = array[j];
-
-	printf("[right]: ");
-	print_array(tmp, i);
+		if (i == mid + 1)
+			printf("\n[right]: %d", tmp[i]);
+		else
+			printf(", %d", tmp[i]);
+	}
 
 	l = start;
 	m = end;
+	printf("\n[Done]: ");
 	for (k = start; k <= end; ++k)
 	{
 		if (tmp[l] <= tmp[m])
@@ -49,9 +56,9 @@ void merge_sort_recursion(int *array, size_t start, size_t end, int *tmp)
 			array[k] = tmp[m];
 			--m;
 		}
+		printf("%d, ", array[k]);
 	}
-	printf("[Done]: ");
-	print_array(array, end + 1);
+	printf("\n");
 }
 
 /**
@@ -65,6 +72,9 @@ void merge_sort_recursion(int *array, size_t start, size_t end, int *tmp)
 void merge_sort(int *array, size_t size)
 {
 	int *tmp;
+
+	if (array == NULL || size < 2)
+		return;
 
 	tmp = malloc(sizeof(int) * size);
 	if (tmp == NULL)
